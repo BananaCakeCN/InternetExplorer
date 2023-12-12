@@ -1,6 +1,5 @@
 for(var i = 0; i < document.getElementsByTagName('input').length; i++){
     document.getElementsByTagName('input')[i].addEventListener("click", function(){
-        console.log(i);
         var image = document.createElement('img');
         image.src = "https://bananacake.top/photos/1.png";
         image.onload = function(){
