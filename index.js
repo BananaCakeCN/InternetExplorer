@@ -6,7 +6,7 @@ function switchAlbum(name){
     switch(name) {
         case 'photos':
             album = photos;
-            albumNameZh = '"摄影"';
+            albumNameZh = '"摄影"'
             break;
         case 'screenshots':
             album = screenshots;
@@ -17,6 +17,7 @@ function switchAlbum(name){
             albumNameZh = '"图片制作"';
             break;
     }
+    document.getElementsByClassName('main-content-title')[0].innerText = albumNameZh;
     albumName = name;
     range = 0;
     loadList(range, album);
