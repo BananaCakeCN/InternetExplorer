@@ -5,12 +5,15 @@ function switchAlbum(name){
     switch(name) {
         case 'photos':
             album = photos;
+            document.getElementsByClassName('main-content-title')[0].innerText = '"摄影"'
             break;
         case 'screenshots':
             album = screenshots;
+            document.getElementsByClassName('main-content-title')[0].innerText = '"截图"'
             break;
         case 'drawings':
             album = drawings;
+            document.getElementsByClassName('main-content-title')[0].innerText = '"图片制作"'
             break;
     }
     albumName = name;
