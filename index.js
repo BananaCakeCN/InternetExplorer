@@ -1,19 +1,20 @@
 var range = 0;
 var album = photos;
 albumName = 'photos';
+albumNameZh = '"摄影"';
 function switchAlbum(name){
     switch(name) {
         case 'photos':
             album = photos;
-            document.getElementsByClassName('main-content-title')[0].innerText = '"摄影"'
+            albumNameZh = '"摄影"';
             break;
         case 'screenshots':
             album = screenshots;
-            document.getElementsByClassName('main-content-title')[0].innerText = '"截图"'
+            albumNameZh = '"截图"';
             break;
         case 'drawings':
             album = drawings;
-            document.getElementsByClassName('main-content-title')[0].innerText = '"图片制作"'
+            albumNameZh = '"图片制作"';
             break;
     }
     albumName = name;
@@ -43,7 +44,7 @@ function loadList(startIndex, album){
     }
     for(var i = startIndex; i < startIndex+25 && i < Object.keys(album).length; i++){
         let block = document.createElement('tr');
-        block.innerHTML = '<tr><td class="table-result"></td><td class="table-result">'+album[Object.keys(album).length-i][1]+'</td><td class="table-result">摄影</td><td class="table-result"><input value="查看" type="button" index="' + (Object.keys(album).length-i) + '"></td></tr>';
+        block.innerHTML = '<tr><td class="table-result"></td><td class="table-result">'+album[Object.keys(album).length-i][1]+'</td><td class="table-result">' + albumNameZh + '</td><td class="table-result"><input value="查看" type="button" index="' + (Object.keys(album).length-i) + '"></td></tr>';
         document.getElementsByTagName('tbody')[0].appendChild(block);
         document.getElementsByTagName('input')[document.getElementsByTagName('input').length-1].addEventListener("click", function(){
             var cacheIndex = this.getAttribute('index');
