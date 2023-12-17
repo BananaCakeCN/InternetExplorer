@@ -51,17 +51,17 @@
                     <ul class="top-list">
                         <li>
                             <div class="top-bars">
-                                <a class="top-font">摄影</a>
+                                <a class="top-font" href="javascript:switchAlbum('photos');">摄影</a>
                             </div>
                         </li>
                         <li>
                             <div class="top-bars">
-                                <a class="top-font">截图</a>
+                                <a class="top-font" href="javascript:switchAlbum('screenshots');">截图</a>
                             </div>
                         </li>
                         <li>
                             <div class="top-bars">
-                                <a class="top-font">图片制作</a>
+                                <a class="top-font" href="javascript:switchAlbum('drawings');">图片制作</a>
                             </div>
                         </li>
                     </ul>
@@ -70,7 +70,7 @@
             <div class="main">
                 <div class="main-top">
                     <span class="main-top-title">Image Catalog</span>
-                    <span class="main-top-detail">假装是开源网页图片管理器</span>
+                    <span class="main-top-detail">假装这里使用其他开源网页图片管理器</span>
                 </div>
                 <div class="content-box">
                     <div class="content-section">
@@ -79,15 +79,15 @@
                     <div class="content-detail">
                         <div style="display: table-cell;">
                             <span>Images:</span>
-                            <span>1 - 25 of 114 (page 1 of 514)</span>
+                            <span id="lengthInfo">1 - 25 of ... (page 1 of ...)</span>
                         </div>
                         <div style="text-align: right; display: table-cell;">
-                            <span>
+                            <span id="previous">
                                 <img src="button_PreviousArrow.gif">
                                 <span>Previous</span>
                             </span>
                             <span>|</span>
-                            <span>
+                            <span id="next">
                                 <span>Next</span>
                                 <img src="button_NextArrow.gif">
                             </span>
@@ -100,7 +100,7 @@
                                     &nbsp;
                                 </th>
                                 <th class="table-header">
-                                    <span>Date</span>
+                                    <span>Time</span>
                                 </th>
                                 <th class="table-header">
                                     <span>Classification</span>
@@ -108,14 +108,6 @@
                                 <th class="table-header">
                                     <span>View</span>
                                 </th>
-                            </tr>
-                            <tr>
-                                <td class="table-result"></td>
-                                <td class="table-result">1145/1/4</td>
-                                <td class="table-result">摄影</td>
-                                <td class="table-result">
-                                    <input value="查看" type="button">
-                                </td>
                             </tr>
                         </tbody>
                     </table>
@@ -139,6 +131,7 @@
                 </div>
             </div>
         </div>
+        <script script="text/javascript" src="https://bananacake.top/js/list.js"></script>
         <script script="text/javascript" src="index.js"></script>
     </body>
 </html>
