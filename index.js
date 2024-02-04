@@ -35,7 +35,11 @@ function nextPage(){
 }
 function loadList(startIndex, album){
     document.getElementsByTagName('tbody')[0].innerHTML = '<tr id="top"><th class="table-header-leftmost">&nbsp;</th><th class="table-header"><span>Time</span></th><th class="table-header"><span>Classification</span></th><th class="table-header"><span>View</span></th></tr>';
-    document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + (startIndex + 25) + ' of ' + Object.keys(album).length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(Object.keys(album).length / 25) + ')';
+    if(startIndex + 25 > Object.keys(album).length){
+        document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + Object.keys(album).length + ' of ' + Object.keys(album).length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(Object.keys(album).length / 25) + ')';
+    }else{
+        document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + (startIndex + 25) + ' of ' + Object.keys(album).length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(Object.keys(album).length / 25) + ')';
+    }
     if(startIndex / 25 == 0){
         document.getElementById('previous').innerHTML = '<img src="button_PreviousArrow_disabled.gif"><span>Previous</span>';
     }else{
