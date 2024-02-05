@@ -10,6 +10,7 @@ function nextPage(){
     range += 25;
     loadList(range);
 }
+var test
 function loadList(startIndex){
     if (window.XMLHttpRequest) {
         var request = new XMLHttpRequest();
@@ -19,6 +20,7 @@ function loadList(startIndex){
     request.onreadystatechange = function(){
         if(request.readyState == 4){
             var xml = new DOMParser().parseFromString(decodeURIComponent(escape(atob(JSON.parse(request.responseText)['content'].replace(/[\r\n]/g, '')))), "text/xml")
+            test = xml
             console.log(xml.getElementsByTagName('lastmod')[0].innerHTML)
             document.getElementsByTagName('tbody')[0].innerHTML = '<tr id="top"><th class="table-header-leftmost">&nbsp;</th><th class="table-header"><span>Title</span></th><th class="table-header"><span>Time</span></th><th class="table-header"><span>View</span></th></tr>';
             if(startIndex + 25 > xml.getElementsByTagName('url').length){
