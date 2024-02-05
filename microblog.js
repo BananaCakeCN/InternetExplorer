@@ -10,6 +10,7 @@ function nextPage(){
     range += 25;
     loadList(range);
 }
+var result
 function loadList(startIndex){
     if (window.XMLHttpRequest) {
         var request = new XMLHttpRequest();
@@ -18,7 +19,7 @@ function loadList(startIndex){
     }
     request.onreadystatechange = function(){
         if(request.readyState == 4){
-            var result = request.responseText
+            result = request.responseText
             console.log(atob(JSON.parse(request.responseText)['content']))
             var xml = new DOMParser().parseFromString(decodeURIComponent(escape(atob(JSON.parse(request.responseText)['content']))), "text/xml")
             document.getElementsByTagName('tbody')[0].innerHTML = '<tr id="top"><th class="table-header-leftmost">&nbsp;</th><th class="table-header"><span>Title</span></th><th class="table-header"><span>Time</span></th><th class="table-header"><span>View</span></th></tr>';
