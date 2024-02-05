@@ -40,7 +40,7 @@ function loadList(startIndex){
                 block.innerHTML = '<tr><td class="table-result"></td><td class="table-result">' + xml.getElementsByTagName('url')[xml.getElementsByTagName('url').length - i - 1].childNodes[5].data + '</td><td class="table-result">' + xml.getElementsByTagName('lastmod')[xml.getElementsByTagName('url').length - i - 1].textContent + '</td><td class="table-result"><input value="查看" type="button" index="' + (xml.getElementsByTagName('url').length - i) + '"></td></tr>';
                 document.getElementsByTagName('tbody')[0].appendChild(block);
                 document.getElementsByTagName('input')[document.getElementsByTagName('input').length-1].addEventListener("click", function(){
-                    window.open('https://microblog.bananacake.top/pages/' + this.getAttribute('index'), "_blank", "width=650; left=" + (window.screen.width/2 - 325) + ";");
+                    window.open('https://microblog.bananacake.top/pages/' + this.getAttribute('index'), "_blank");
                 });
             }
         }
