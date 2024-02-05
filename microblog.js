@@ -10,7 +10,6 @@ function nextPage(){
     range += 25;
     loadList(range);
 }
-var result
 function loadList(startIndex){
     if (window.XMLHttpRequest) {
         var request = new XMLHttpRequest();
@@ -19,11 +18,14 @@ function loadList(startIndex){
     }
     request.onreadystatechange = function(){
         if(request.readyState == 4){
-            result = request.responseText
-            console.log(atob(JSON.parse(request.responseText)['content'].replace(/[\r\n]/g, '')))
             var xml = new DOMParser().parseFromString(decodeURIComponent(escape(atob(JSON.parse(request.responseText)['content'].replace(/[\r\n]/g, '')))), "text/xml")
+            console.log(xml.getElementsByTagName('lastmod'))
             document.getElementsByTagName('tbody')[0].innerHTML = '<tr id="top"><th class="table-header-leftmost">&nbsp;</th><th class="table-header"><span>Title</span></th><th class="table-header"><span>Time</span></th><th class="table-header"><span>View</span></th></tr>';
-            document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + (startIndex + 25) + ' of ' + xml.getElementsByTagName('url').length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(xml.getElementsByTagName('url').length / 25) + ')';
+            if(startIndex + 25 > xml.getElementsByTagName('url').length){
+                document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + Object.keys(album).length + ' of ' + Object.keys(album).length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(Object.keys(album).length / 25) + ')';
+            }else{
+                document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + (startIndex + 25) + ' of ' + Object.keys(album).length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(Object.keys(album).length / 25) + ')';
+            }
             if(startIndex / 25 == 0){
                 document.getElementById('previous').innerHTML = '<img src="button_PreviousArrow_disabled.gif"><span>Previous</span>';
             }else{
