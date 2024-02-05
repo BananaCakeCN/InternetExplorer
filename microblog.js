@@ -1,3 +1,6 @@
+if (!window.document.documentMode) {
+    window.location = 'https://microblog.bananacake.top/'
+}
 var range = 0;
 function lastPage(){
     range -= 25;
