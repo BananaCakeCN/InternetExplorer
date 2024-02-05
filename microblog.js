@@ -19,7 +19,7 @@ function loadList(startIndex){
     request.onreadystatechange = function(){
         if(request.readyState == 4){
             var xml = new DOMParser().parseFromString(decodeURIComponent(escape(atob(JSON.parse(request.responseText)['content'].replace(/[\r\n]/g, '')))), "text/xml")
-            console.log(xml.getElementsByTagName('lastmod'))
+            console.log(xml.getElementsByTagName('lastmod')[0].innerHTML)
             document.getElementsByTagName('tbody')[0].innerHTML = '<tr id="top"><th class="table-header-leftmost">&nbsp;</th><th class="table-header"><span>Title</span></th><th class="table-header"><span>Time</span></th><th class="table-header"><span>View</span></th></tr>';
             if(startIndex + 25 > xml.getElementsByTagName('url').length){
                 document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + xml.getElementsByTagName('url').length + ' of ' + xml.getElementsByTagName('url').length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(xml.getElementsByTagName('url').length / 25) + ')';
