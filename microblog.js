@@ -10,7 +10,7 @@ function nextPage(){
     range += 25;
     loadList(range);
 }
-async function loadList(startIndex){
+function loadList(startIndex){
     if (window.XMLHttpRequest) {
         var request = new XMLHttpRequest();
     }else{
