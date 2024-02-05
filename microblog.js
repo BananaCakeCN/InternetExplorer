@@ -10,7 +10,6 @@ function nextPage(){
     range += 25;
     loadList(range);
 }
-var test
 function loadList(startIndex){
     if (window.XMLHttpRequest) {
         var request = new XMLHttpRequest();
@@ -19,9 +18,7 @@ function loadList(startIndex){
     }
     request.onreadystatechange = function(){
         if(request.readyState == 4){
-            var xml = new DOMParser().parseFromString(decodeURIComponent(escape(atob(JSON.parse(request.responseText)['content'].replace(/[\r\n]/g, '')))), "text/xml")
-            test = xml
-            console.log(xml.getElementsByTagName('lastmod')[0].innerHTML)
+            var xml = new DOMParser().parseFromString(decodeURIComponent(escape(atob(JSON.parse(request.responseText)['content'].replace(/[\r\n]/g, '')))), "text/xml");
             document.getElementsByTagName('tbody')[0].innerHTML = '<tr id="top"><th class="table-header-leftmost">&nbsp;</th><th class="table-header"><span>Title</span></th><th class="table-header"><span>Time</span></th><th class="table-header"><span>View</span></th></tr>';
             if(startIndex + 25 > xml.getElementsByTagName('url').length){
                 document.getElementById('lengthInfo').innerText = (startIndex + 1) + ' - ' + xml.getElementsByTagName('url').length + ' of ' + xml.getElementsByTagName('url').length + ' (page ' + (startIndex / 25 + 1) + ' of ' + Math.ceil(xml.getElementsByTagName('url').length / 25) + ')';
@@ -40,7 +37,7 @@ function loadList(startIndex){
             }
             for(var i = startIndex; i < startIndex + 25 && i < xml.getElementsByTagName('url').length; i++){
                 let block = document.createElement('tr');
-                block.innerHTML = '<tr><td class="table-result"></td><td class="table-result">' + xml.getElementsByTagName('url')[xml.getElementsByTagName('url').length - i - 1].childNodes[5].data + '</td><td class="table-result">' + xml.getElementsByTagName('lastmod')[xml.getElementsByTagName('url').length - i - 1].innerHTML + '</td><td class="table-result"><input value="查看" type="button" index="' + (xml.getElementsByTagName('url').length - i) + '"></td></tr>';
+                block.innerHTML = '<tr><td class="table-result"></td><td class="table-result">' + xml.getElementsByTagName('url')[xml.getElementsByTagName('url').length - i - 1].childNodes[5].data + '</td><td class="table-result">' + xml.getElementsByTagName('lastmod')[xml.getElementsByTagName('url').length - i - 1].textContent + '</td><td class="table-result"><input value="查看" type="button" index="' + (xml.getElementsByTagName('url').length - i) + '"></td></tr>';
                 document.getElementsByTagName('tbody')[0].appendChild(block);
                 document.getElementsByTagName('input')[document.getElementsByTagName('input').length-1].addEventListener("click", function(){
                     window.open('https://microblog.bananacake.top/pages/' + this.getAttribute('index'), "_blank", "width=650; height=500; left=" + (window.screen.width/2 - 325) + "; top="+(window.screen.height/2 - 250)+";");
