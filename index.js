@@ -1,6 +1,3 @@
-if (!window.document.documentMode) {
-    window.location = 'https://bananacake.top/images'
-}
 var range = 0;
 var album = photos;
 albumName = 'photos';
@@ -57,7 +54,7 @@ function loadList(startIndex, album){
         document.getElementsByTagName('input')[document.getElementsByTagName('input').length-1].addEventListener("click", function(){
             var cacheIndex = this.getAttribute('index');
             var image = document.createElement('img');
-            image.src = "http://assets.bananacake.top/" + albumName + "/" + cacheIndex + ".png";
+            image.src = "http://assets" + (albumName == 'photos' && parseInt(this.getAttribute('index')) > 111 ? '2' : '') + ".bananacake.top/" + albumName + "/" + cacheIndex + ".png";
             image.onload = function(){
                 window.open("imageViewer.html?index=" + cacheIndex + "&category=" + albumName, "_blank", "width=" + ((image.width/image.height)*500) + "; height=500; left=" + (window.screen.width/2 - ((image.width/image.height)*500)/2) + "; top="+(window.screen.height/2 - 250)+";");
             }
